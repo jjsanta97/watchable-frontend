@@ -1,0 +1,16 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class DialogService {
+  private dialogOpenSubject = new BehaviorSubject<boolean>(false);
+  dialogOpen$ = this.dialogOpenSubject.asObservable();
+
+  constructor() {}
+
+  setDialogOpen(isOpen: boolean) {
+    this.dialogOpenSubject.next(isOpen);
+  }
+}

@@ -1,0 +1,21 @@
+<div *ngIf="users.length === 0" class="mt-4 text-center">
+  <p>No se encontraron usuarios.</p>
+</div>
+
+<div *ngFor="let user of users" class="profile-container">
+  <mat-card class="mt-2">
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="profile-picture"
+        [ngStyle]="{ 'background-image': 'url(' + user.profile_picture + ')' }"
+      ></div>
+      <mat-card-title>{{ user.username }}</mat-card-title>
+      <mat-card-subtitle>{{ user.full_name }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      {{ user?.description || "Cuéntale a la comunidad sobre ti." }}
+    </mat-card-content>
+  </mat-card>
+</div>

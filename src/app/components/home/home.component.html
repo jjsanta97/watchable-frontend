@@ -1,0 +1,95 @@
+<mat-toolbar>
+  <span>Inicio</span>
+</mat-toolbar>
+
+<div class="home-container">
+  <mat-card *ngFor="let post of posts" class="mt-2 mb-2">
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="profile-picture"
+        [ngStyle]="{
+          'background-image':
+            'url(' +
+            'http://localhost:8088/' +
+            post.author.profile_picture +
+            ')'
+        }"
+      ></div>
+      <mat-card-title>{{ post.author.username }}</mat-card-title>
+      <mat-card-subtitle>{{
+        post.create_date | date : "short"
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.body }}</p>
+    </mat-card-content>
+    <div *ngIf="post.image" class="post-image-container">
+      <img
+        [src]="'http://localhost:8088/' + post.image"
+        class="post-image mt-2"
+      />
+    </div>
+    <mat-card-actions>
+      <div class="d-flex align-items-center me-2">
+        <button mat-icon-button (click)="toggleLike(post)">
+          <mat-icon *ngIf="post.userLike; else noLike">favorite</mat-icon>
+          <ng-template #noLike>
+            <mat-icon>favorite_border</mat-icon>
+          </ng-template>
+        </button>
+        <span>{{ post.likesCount }}</span>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button mat-icon-button (click)="openCommentDialog(post)">
+          <mat-icon>chat_bubble_outline</mat-icon>
+        </button>
+        <span>{{ post.commentsCount }}</span>
+      </div>
+      <!--<button mat-icon-button (click)="toggleLike(post)">
+        <mat-icon *ngIf="post.userLike; else noLike">favorite</mat-icon>
+        <ng-template #noLike>
+          <mat-icon>favorite_border</mat-icon>
+        </ng-template>
+      </button>
+      <button mat-icon-button (click)="openCommentDialog(post.id)">
+        <mat-icon>chat_bubble_outline</mat-icon>
+      </button>-->
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+  </mat-card>
+</div>
+
+<!--<div class="home-container">
+  <mat-card class="mt-2 mb-2">
+    <mat-card-header>
+      <div mat-card-avatar class="profile-picture"></div>
+      <mat-card-title>mario8</mat-card-title>
+      <mat-card-subtitle>10/03/2025</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>Titulo publicación</h1>
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley.
+      </p>
+    </mat-card-content>
+    <img
+      mat-card-image
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+      class="mt-2"
+    />
+    <mat-card-actions>
+      <button mat-icon-button>
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>comment</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-divider></mat-divider>
+</div>-->

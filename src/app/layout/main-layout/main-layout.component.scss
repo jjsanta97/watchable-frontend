@@ -1,0 +1,19 @@
+.header {
+  background-color: rgb(18, 19, 22);
+}
+
+.container-fluid {
+  font-family: "Roboto";
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+  }
+}
+
+.sidebar {
+  background-color: rgb(18, 19, 22);
+}

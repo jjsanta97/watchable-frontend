@@ -1,0 +1,37 @@
+.add-comment-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.comment-card mat-card-header,
+.comment-card mat-card-content {
+  padding: 0px;
+}
+
+.comment-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto;
+}
+
+.comment-card-container {
+  width: 100%;
+  max-width: 500px;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-list {
+  max-height: 50vh;
+  overflow-y: auto;
+}

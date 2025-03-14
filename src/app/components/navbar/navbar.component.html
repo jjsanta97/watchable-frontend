@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg border border-white p-0">
+  <div class="container-fluid">
+    <a
+      href="http://localhost:4200/home"
+      class="d-flex align-items-center navbar-logo mb-4"
+    >
+      <mat-icon class="me-1">watch</mat-icon>
+      <span>Watchable</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menuItems"
+      aria-controls="menuItems"
+      aria-expanded="false"
+      aria-label="Toggle Navigation"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="collapse navbar-collapse mt-2 w-100" id="menuItems">
+      <ul class="navbar-nav w-100">
+        <li class="nav-item">
+          <a href="http://localhost:4200/home">
+            <button mat-button class="nav-btn">
+              <mat-icon>home</mat-icon>Inicio
+            </button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="http://localhost:4200/profile">
+            <button mat-button class="nav-btn">
+              <mat-icon>person</mat-icon>Perfil
+            </button>
+          </a>
+        </li>
+      </ul>
+      <button
+        mat-flat-button
+        class="new-post-button w-100 justify-content-start mt-4"
+        (click)="openNewPostDialog()"
+        [disabled]="dialogOpen"
+      >
+        Nueva publicación
+      </button>
+      <mat-form-field class="w-100 mt-2" appearance="fill">
+        <input matInput [(ngModel)]="searchQuery" type="text" placeholder="Busca en Watchable..." />
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Search"
+          class="search-btn"
+          (click)="search()"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+</nav>

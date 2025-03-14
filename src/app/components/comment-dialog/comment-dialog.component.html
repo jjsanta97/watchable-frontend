@@ -1,0 +1,100 @@
+<!--<div class="d-flex justify-content-center align-items-center">
+  <mat-card class="m-auto w-100 p-2">
+    <mat-card-header class="mb-4">
+      <mat-card-title-group>
+        <mat-card-title class="text-center">
+          <h5>Comentarios</h5>
+        </mat-card-title>
+        <button
+          mat-icon-button
+          class="d-flex justify-content-center align-items-center"
+          (click)="closeDialog()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="w-100" appearance="fill">
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="commentText"
+          placeholder="Escribe un comentario..."
+        />
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Create comment"
+          class="add-comment-btn"
+          (click)="addComment()"
+        >
+          <mat-icon>add_comment</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div *ngFor="let comment of comments" class="comment">
+        <mat-card class="comment-card mb-3">
+          <mat-card-header>
+            <mat-card-subtitle>{{ comment.author.username }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+                {{ comment.body }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>-->
+
+<div class="comment-dialog-container">
+  <mat-card class="comment-card-container m-auto w-100 p-2">
+    <mat-card-header class="mb-4">
+      <mat-card-title-group>
+        <mat-card-title class="text-center">
+          <h5>Comentarios</h5>
+        </mat-card-title>
+        <button
+          mat-icon-button
+          class="d-flex justify-content-center align-items-center"
+          (click)="closeDialog()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card-title-group>
+    </mat-card-header>
+
+    <mat-card-content class="comment-card-content">
+      <mat-form-field class="w-100" appearance="fill">
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="commentText"
+          placeholder="Escribe un comentario..."
+        />
+        <button
+          matSuffix
+          mat-icon-button
+          aria-label="Create comment"
+          class="add-comment-btn"
+          (click)="addComment()"
+        >
+          <mat-icon>add_comment</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="comment-list">
+        <mat-card *ngFor="let comment of comments" class="comment-card mb-3">
+          <mat-card-header>
+            <mat-card-subtitle>{{ comment.author.username }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ comment.body }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

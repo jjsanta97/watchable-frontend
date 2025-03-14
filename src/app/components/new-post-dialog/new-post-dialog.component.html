@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center align-items-center">
+  <mat-card class="m-auto w-100 p-2">
+    <mat-card-header class="mb-4">
+      <mat-card-title-group>
+        <mat-card-title class="text-center">
+          <h5>Crea una publicación</h5>
+        </mat-card-title>
+        <button
+          mat-icon-button
+          class="d-flex justify-content-center align-items-center"
+          (click)="closeDialog()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-100" hideRequiredMarker="true">
+          <mat-label>Título</mat-label>
+          <input matInput formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100" hideRequiredMarker="true">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput rows="5" formControlName="body"></textarea>
+        </mat-form-field>
+
+        <div>
+          <input
+            type="file"
+            #fileInput
+            hidden
+            (change)="onFileSelected($event)"
+          />
+          <button mat-flat-button type="button" (click)="fileInput.click()">
+            <mat-icon>photo_camera</mat-icon>Cargar imagen
+          </button>
+          <p *ngIf="selectedFile" class="mt-2">{{ selectedFile.name }}</p>
+        </div>
+
+        <div class="mt-4">
+          <button mat-flat-button class="w-100" type="submit">Publicar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <mat-card class="m-auto" appearance="outlined">
+    <mat-card-header
+      class="mb-4 d-flex flex-column align-items-center justify-content-center"
+    >
+      <mat-card-title class="text-center">
+        <mat-icon class="mb-4">watch</mat-icon>
+        <h3>Ingresa a Watchable</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field
+          class="w-100"
+          hideRequiredMarker="true"
+        >
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" />
+        </mat-form-field>
+
+        <mat-form-field
+          class="mb-3 w-100"
+          hideRequiredMarker="true"
+        >
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+
+        <div>
+          <button mat-flat-button class="w-100" type="submit">Ingresar</button>
+        </div>
+      </form>
+      <div class="text-center mt-3">
+        <p>
+          ¿No tienes una cuenta? <a (click)="goToSignup()">Regístrate</a>
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

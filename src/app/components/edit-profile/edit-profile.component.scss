@@ -1,0 +1,26 @@
+$primary-color: rgb(227, 226, 230);
+$secondary-color: rgb(171, 199, 255);
+
+button {
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button mat-icon {
+  color: $secondary-color;
+}
+
+p {
+  font-family: Roboto;
+}
+
+p a {
+  color: $secondary-color;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+p a:hover {
+  color: $secondary-color;
+  text-decoration: underline;
+}

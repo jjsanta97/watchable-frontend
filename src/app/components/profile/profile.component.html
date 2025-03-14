@@ -1,0 +1,37 @@
+<mat-toolbar>
+  <span>Perfil</span>
+</mat-toolbar>
+
+<div class="profile-container">
+  <mat-card *ngIf="user" class="mt-2">
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="profile-picture d-flex justify-content-end align-items-end"
+        [ngStyle]="{ 'background-image': 'url(' + profilePicture + ')' }"
+      >
+        <button
+          mat-icon-button
+          class="d-flex justify-content-center align-items-center"
+        >
+          <mat-icon>photo_camera</mat-icon>
+          <input type="file" (change)="onFileSelected($event)" />
+        </button>
+      </div>
+      <mat-card-title>{{ user.username }}</mat-card-title>
+      <mat-card-subtitle>{{ user.full_name }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      {{ user?.description || "Cuéntale a la comunidad sobre ti." }}
+    </mat-card-content>
+    <mat-card-actions class="mt-4">
+      <button mat-flat-button class="me-2" (click)="editProfile()">
+        <mat-icon>edit</mat-icon>Editar perfil
+      </button>
+      <button mat-flat-button (click)="logout()">
+        <mat-icon>logout</mat-icon>Cerrar sesión
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
