@@ -1,21 +1,83 @@
-<div *ngIf="users.length === 0" class="mt-4 text-center">
-  <p>No se encontraron usuarios.</p>
+<mat-toolbar>
+  <span>Usuarios</span>
+</mat-toolbar>
+
+<div *ngIf="!user" class="mt-4 text-center">
+  <p>No se encuentra ningun usuario</p>
 </div>
 
-<div *ngFor="let user of users" class="profile-container">
+<div *ngIf="user" class="profile-container">
   <mat-card class="mt-2">
     <mat-card-header>
       <div
         mat-card-avatar
         class="profile-picture"
-        [ngStyle]="{ 'background-image': 'url(' + user.profile_picture + ')' }"
+        [ngStyle]="{
+          'background-image':
+            'url(' + 'http://localhost:8088/' + user.profile_picture + ')'
+        }"
       ></div>
       <mat-card-title>{{ user.username }}</mat-card-title>
       <mat-card-subtitle>{{ user.full_name }}</mat-card-subtitle>
       <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      {{ user?.description || "Cuéntale a la comunidad sobre ti." }}
+      {{ user.description || "Cuéntale a la comunidad sobre ti." }}
     </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="posts.length === 0" class="mt-4 text-center">
+  <p>El usuario no tiene publicaciones en Watchable</p>
+</div>
+
+<div class="profile-posts-container">
+  <mat-card *ngFor="let post of posts" class="mt-2 mb-2">
+    <mat-card-header>
+      <!--<div
+        mat-card-avatar
+        class="profile-picture-post"
+        [ngStyle]="{
+          'background-image':
+            'url(' +
+            'http://localhost:8088/' +
+            post.author.profile_picture +
+            ')'
+        }"
+      ></div>-->
+      <!--<mat-card-title>{{ post.author.username }}</mat-card-title>-->
+      <mat-card-subtitle>{{
+        post.create_date | date : "short"
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.body }}</p>
+    </mat-card-content>
+    <div *ngIf="post.image" class="post-image-container">
+      <img
+        [src]="'http://localhost:8088/' + post.image"
+        class="post-image mt-2"
+      />
+    </div>
+    <mat-card-actions>
+      <div class="d-flex align-items-center me-2">
+        <button mat-icon-button (click)="toggleLike(post)">
+          <mat-icon *ngIf="post.userLike; else noLike">favorite</mat-icon>
+          <ng-template #noLike>
+            <mat-icon>favorite_border</mat-icon>
+          </ng-template>
+        </button>
+        <span>{{ post.likesCount }}</span>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button mat-icon-button (click)="openCommentDialog(post)">
+          <mat-icon>chat_bubble_outline</mat-icon>
+        </button>
+        <span>{{ post.commentsCount }}</span>
+      </div>
+    </mat-card-actions>
+    <mat-divider></mat-divider>
   </mat-card>
 </div>

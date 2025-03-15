@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { PostService } from '../../services/post.service';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +22,7 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatDividerModule,
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
@@ -28,20 +31,26 @@ export class ProfileComponent implements OnInit {
   user: any;
   profilePicture: string =
     'https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg';
+  posts: any[] = [];
 
   constructor(
     private userService: UserService,
     private authService: AuthService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private postService: PostService
   ) {}
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((data) => {
+      console.log('DATA PROFILE:', data);
       this.user = data;
       this.profilePicture = data.profile_picture
         ? `http://localhost:8088/${data.profile_picture}`
         : this.profilePicture;
+      this.postService.getUserPosts(this.user.id).subscribe((postData) => {
+        this.posts = postData.posts;
+      });
     });
   }
 
@@ -78,5 +87,13 @@ export class ProfileComponent implements OnInit {
       this.user = updatedUser;
       this.profilePicture = `http://localhost:8088/${updatedUser.profile_picture}`;
     });
+  }
+
+  toggleLike(post: any) {
+    this.postService.toggleLike(post);
+  }
+
+  openCommentDialog(post: any) {
+    this.postService.openCommentDialog(post);
   }
 }

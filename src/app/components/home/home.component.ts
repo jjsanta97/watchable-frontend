@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.postSubscription = this.postService.postCreated$.subscribe(() => {
       this.loadPosts();
     });
-    // this.userId = this.authService.getUserId();
   }
 
   loadPosts() {
@@ -62,27 +61,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggleLike(post: any) {
+  /*toggleLike(post: any) {
     if (post.userLike) {
-      // Si el usuario ya ha dado like, lo quitamos
       this.likeService.unlikePost(post.userLike.id).subscribe(() => {
-        post.likesCount--; // Reducir el contador de likes
-        post.userLike = null; // Quitar el like del usuario
+        post.likesCount--;
+        post.userLike = null;
       });
     } else {
-      // Si el usuario no ha dado like, lo agregamos
       this.likeService.likePost(post.id).subscribe((res) => {
-        post.likesCount++; // Aumentar el contador de likes
-        post.userLike = res.comment; // Guardar el like del usuario
+        post.likesCount++;
+        post.userLike = res.comment;
       });
     }
-  }
+  }*/
 
   ngOnDestroy() {
     this.postSubscription.unsubscribe();
   }
 
-  openCommentDialog(post: any) {
+  /*openCommentDialog(post: any) {
     console.log('Post recibido en openCommentDialog:', post);
     const dialogRef = this.dialog.open(CommentDialogComponent, {
       width: '400px',
@@ -95,5 +92,13 @@ export class HomeComponent implements OnInit, OnDestroy {
           post.commentsCount = updatedCommentsCount;
         }
       });
+  }*/
+
+  toggleLike(post: any) {
+    this.postService.toggleLike(post);
+  }
+
+  openCommentDialog(post: any) {
+    this.postService.openCommentDialog(post);
   }
 }
