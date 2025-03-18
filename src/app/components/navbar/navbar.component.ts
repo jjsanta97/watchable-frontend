@@ -53,4 +53,12 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/search', this.searchQuery]);
     }
   }
+
+  goToHome() {
+    this.router.navigate(['/home']);
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
 }

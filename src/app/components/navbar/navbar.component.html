@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg p-0">
   <div class="container-fluid">
     <a
-      href="http://localhost:4200/home"
       class="d-flex align-items-center navbar-logo mb-4"
+      (click)="goToHome()"
     >
       <mat-icon class="me-1">watch</mat-icon>
       <span>Watchable</span>
@@ -21,16 +21,18 @@
     <div class="collapse navbar-collapse mt-2 w-100" id="menuItems">
       <ul class="navbar-nav w-100">
         <li class="nav-item">
-          <a href="http://localhost:4200/home">
+          <a (click)="goToHome()">
             <button mat-button class="nav-btn">
-              <mat-icon>home</mat-icon>Inicio
+              <mat-icon>home</mat-icon>
+              <span>Inicio</span>
             </button>
           </a>
         </li>
         <li class="nav-item">
-          <a href="http://localhost:4200/profile">
+          <a (click)="goToProfile()">
             <button mat-button class="nav-btn">
-              <mat-icon>person</mat-icon>Perfil
+              <mat-icon>person</mat-icon>
+              <span>Perfil</span>
             </button>
           </a>
         </li>
