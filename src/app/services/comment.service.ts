@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CommentService {
-  private apiUrl = 'http://localhost:8088/comments';
+  private apiUrl = 'https://watchable-backend.onrender.com/comments';
 
   constructor(private http: HttpClient) {}
 

@@ -11,7 +11,7 @@ import { CommentDialogComponent } from '../components/comment-dialog/comment-dia
   providedIn: 'root',
 })
 export class PostService {
-  private apiUrl = 'http://localhost:8088/posts';
+  private apiUrl = 'https://watchable-backend.onrender.com/posts';
   private postCreatedSubject = new BehaviorSubject<boolean>(false);
   postCreated$ = this.postCreatedSubject.asObservable();
 

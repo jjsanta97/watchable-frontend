@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LikeService {
-  private apiUrl = 'http://localhost:8088/likes';
+  private apiUrl = 'https://watchable-backend.onrender.com/likes';
 
   constructor(private http: HttpClient) {}
 

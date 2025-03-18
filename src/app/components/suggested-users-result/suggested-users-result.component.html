@@ -10,7 +10,7 @@
         class="profile-picture"
         [ngStyle]="{
           'background-image': user.profile_picture
-            ? 'url(http://localhost:8088/' + user.profile_picture + ')'
+            ? 'url(https://watchable-backend.onrender.com/' + user.profile_picture + ')'
             : 'url(/default-profile-picture.jpg)'
         }"
       ></div>
@@ -41,7 +41,7 @@
     </mat-card-content>
     <div *ngIf="post.image" class="post-image-container">
       <img
-        [src]="'http://localhost:8088/' + post.image"
+        [src]="'https://watchable-backend.onrender.com/' + post.image"
         class="post-image mt-2"
       />
     </div>

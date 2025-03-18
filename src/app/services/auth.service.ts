@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8088/auth/token';
+  private apiUrl = 'https://watchable-backend.onrender.com/auth/token';
 
   constructor(private http: HttpClient) {}
 

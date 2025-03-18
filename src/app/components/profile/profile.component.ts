@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getCurrentUser().subscribe((data) => {
       this.user = data;
       this.profilePicture = data.profile_picture
-        ? `http://localhost:8088/${data.profile_picture}`
+        ? `https://watchable-backend.onrender.com/${data.profile_picture}`
         : this.profilePicture;
       this.postService.getUserPosts(this.user.id).subscribe((postData) => {
         this.posts = postData.posts;
@@ -74,7 +74,7 @@ export class ProfileComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       this.userService.uploadProfilePicture(file).subscribe((response) => {
-        this.profilePicture = `http://localhost:8088/${response.profile_picture}`;
+        this.profilePicture = `https://watchable-backend.onrender.com/${response.profile_picture}`;
         this.refreshUserData();
       });
     }
@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
   refreshUserData() {
     this.userService.getCurrentUser().subscribe((updatedUser) => {
       this.user = updatedUser;
-      this.profilePicture = `http://localhost:8088/${updatedUser.profile_picture}`;
+      this.profilePicture = `https://watchable-backend.onrender.com/${updatedUser.profile_picture}`;
     });
   }
 
