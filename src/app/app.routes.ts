@@ -41,7 +41,14 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./components/search-results/search-results.component').then(
             (m) => m.SearchResultsComponent
-          )
+          ),
+      },
+      {
+        path: 'user/:query',
+        loadComponent: () =>
+          import(
+            './components/suggested-users-result/suggested-users-result.component'
+          ).then((m) => m.SuggestedUsersResultComponent),
       },
     ],
   },

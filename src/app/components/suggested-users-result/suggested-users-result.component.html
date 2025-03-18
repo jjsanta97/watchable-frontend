@@ -2,10 +2,6 @@
   <span>Usuarios</span>
 </mat-toolbar>
 
-<div *ngIf="!user" class="mt-4 text-center">
-  <p>No se encuentra ningun usuario</p>
-</div>
-
 <div *ngIf="user" class="profile-container">
   <mat-card class="mt-2">
     <mat-card-header>
@@ -13,8 +9,9 @@
         mat-card-avatar
         class="profile-picture"
         [ngStyle]="{
-          'background-image':
-            'url(' + 'http://localhost:8088/' + user.profile_picture + ')'
+          'background-image': user.profile_picture
+            ? 'url(http://localhost:8088/' + user.profile_picture + ')'
+            : 'url(/default-profile-picture.jpg)'
         }"
       ></div>
       <mat-card-title>{{ user.username }}</mat-card-title>

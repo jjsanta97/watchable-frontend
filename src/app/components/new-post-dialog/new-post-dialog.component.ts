@@ -51,10 +51,6 @@ export class NewPostDialogComponent {
   }
 
   onFileSelected(event: any) {
-    /*const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      this.selectedFile = file;
-    }*/
     const file: File = event.target.files[0];
     if (file) {
       this.selectedFile = file;

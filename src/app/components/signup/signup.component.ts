@@ -57,13 +57,11 @@ export class SignupComponent {
       this.userService.registerUser(this.registerForm.value).subscribe({
         next: (response) => {
           this.successMessage = 'Usuario registrado exitosamente';
-          // this.errorMessage = '';
           this.openSnackBar(this.successMessage);
           this.router.navigate(['/home']);
         },
         error: (err) => {
           this.errorMessage = 'Error al registrar usuario';
-          // this.successMessage = '';
           this.openSnackBar(this.errorMessage);
         },
       });

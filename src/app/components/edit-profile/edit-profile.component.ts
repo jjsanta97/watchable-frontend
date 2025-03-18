@@ -82,7 +82,6 @@ export class EditProfileComponent {
           this.dialogRef.close(true);
         },
         error: (err) => {
-          console.log('ERROR', err);
           this.openSnackBar(err.error.detail);
         },
       });

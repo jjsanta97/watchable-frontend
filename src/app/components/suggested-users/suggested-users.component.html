@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <span>Usuarios sugeridos</span>
+</mat-toolbar>
+
+<div class="profile-container">
+  <mat-card
+    *ngFor="let user of suggestedUsers"
+    class="mt-2"
+    (click)="getSuggestedUser(user.username)"
+  >
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="profile-picture"
+        [ngStyle]="{
+          'background-image': user.profile_picture
+            ? 'url(http://localhost:8088/' + user.profile_picture + ')'
+            : 'url(/default-profile-picture.jpg)'
+        }"
+      ></div>
+      <mat-card-title>{{ user.username }}</mat-card-title>
+      <mat-card-subtitle>{{ user.full_name }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>

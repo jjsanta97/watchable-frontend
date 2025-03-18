@@ -56,43 +56,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   loadPosts() {
     this.postService.getAllPosts().subscribe((response) => {
-      console.log('POSTS', response);
       this.posts = response.posts;
     });
   }
 
-  /*toggleLike(post: any) {
-    if (post.userLike) {
-      this.likeService.unlikePost(post.userLike.id).subscribe(() => {
-        post.likesCount--;
-        post.userLike = null;
-      });
-    } else {
-      this.likeService.likePost(post.id).subscribe((res) => {
-        post.likesCount++;
-        post.userLike = res.comment;
-      });
-    }
-  }*/
-
   ngOnDestroy() {
     this.postSubscription.unsubscribe();
   }
-
-  /*openCommentDialog(post: any) {
-    console.log('Post recibido en openCommentDialog:', post);
-    const dialogRef = this.dialog.open(CommentDialogComponent, {
-      width: '400px',
-      data: { postId: post.id, commentsCount: post.commentsCount },
-    });
-    dialogRef
-      .afterClosed()
-      .subscribe((updatedCommentsCount: number | undefined) => {
-        if (updatedCommentsCount !== undefined) {
-          post.commentsCount = updatedCommentsCount;
-        }
-      });
-  }*/
 
   toggleLike(post: any) {
     this.postService.toggleLike(post);

@@ -67,7 +67,6 @@ export class PostService {
   }
 
   openCommentDialog(post: any) {
-    console.log('Post recibido en openCommentDialog:', post);
     const dialogRef = this.dialog.open(CommentDialogComponent, {
       width: '400px',
       data: { postId: post.id, commentsCount: post.commentsCount },

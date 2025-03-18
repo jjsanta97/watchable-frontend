@@ -29,8 +29,7 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class ProfileComponent implements OnInit {
   user: any;
-  profilePicture: string =
-    'https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg';
+  profilePicture: string = '/default-profile-picture.jpg'
   posts: any[] = [];
 
   constructor(
@@ -43,7 +42,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getCurrentUser().subscribe((data) => {
-      console.log('DATA PROFILE:', data);
       this.user = data;
       this.profilePicture = data.profile_picture
         ? `http://localhost:8088/${data.profile_picture}`

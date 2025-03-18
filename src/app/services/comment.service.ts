@@ -28,7 +28,6 @@ export class CommentService {
   }
 
   getComments(postId: number): Observable<any> {
-    console.log("PostId", postId);
     return this.http.get(`${this.apiUrl}/${postId}`);
   }
 }

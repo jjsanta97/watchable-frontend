@@ -12,7 +12,6 @@ export class UserService {
 
   getHttpHeaders() {
     const token = localStorage.getItem('token');
-    console.log("ENTRO", token)
     return {
       headers: new HttpHeaders({
         Authorization: `Bearer ${token}`,
@@ -56,5 +55,9 @@ export class UserService {
       `${this.apiUrl}/search?query=${query}`,
       this.getHttpHeaders()
     );
+  }
+
+  getSuggestedUsers(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/suggested`, this.getHttpHeaders());
   }
 }

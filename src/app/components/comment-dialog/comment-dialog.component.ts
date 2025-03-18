@@ -48,7 +48,6 @@ export class CommentDialogComponent {
 
   loadComments() {
     this.commentService.getComments(this.data.postId).subscribe((comments) => {
-      console.log('COMMENTS', comments);
       this.comments = comments;
     });
   }
@@ -62,8 +61,6 @@ export class CommentDialogComponent {
     };
 
     this.commentService.createComment(commentData).subscribe((newComment) => {
-      // this.comments.unshift(newComment.comment);
-      // this.cdRef.detectChanges();
       this.comments = [newComment.comment, ...this.comments];
       this.commentText = '';
       this.commentsCount += 1;

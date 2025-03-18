@@ -43,18 +43,6 @@
 <div class="profile-posts-container">
   <mat-card *ngFor="let post of posts" class="mt-2 mb-2">
     <mat-card-header>
-      <!--<div
-        mat-card-avatar
-        class="profile-picture-post"
-        [ngStyle]="{
-          'background-image':
-            'url(' +
-            'http://localhost:8088/' +
-            post.author.profile_picture +
-            ')'
-        }"
-      ></div>-->
-      <!--<mat-card-title>{{ post.author.username }}</mat-card-title>-->
       <mat-card-subtitle>{{
         post.create_date | date : "short"
       }}</mat-card-subtitle>

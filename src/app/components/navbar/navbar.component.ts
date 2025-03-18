@@ -43,14 +43,12 @@ export class NavbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log('RESULT NEW POST', result);
         this.dialogService.setDialogOpen(false);
       }
     });
   }
 
   search() {
-    console.log("ENTROOOOOOOO", this.searchQuery);
     if (this.searchQuery.trim()) {
       this.router.navigate(['/search', this.searchQuery]);
     }

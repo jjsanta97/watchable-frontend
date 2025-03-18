@@ -20,7 +20,6 @@ export class LikeService {
   }
 
   likePost(postId: number): Observable<any> {
-    console.log(postId);
     return this.http.post(
       `${this.apiUrl}/likes`,
       { post_id: postId },

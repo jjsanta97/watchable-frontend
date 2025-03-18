@@ -12,19 +12,19 @@ import { UserService } from '../../services/user.service';
 import { PostService } from '../../services/post.service';
 
 @Component({
-  selector: 'app-search-results',
+  selector: 'app-suggested-users-result',
   imports: [
+    CommonModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule,
-    CommonModule,
     MatDividerModule,
+    MatButtonModule,
   ],
-  templateUrl: './search-results.component.html',
-  styleUrl: './search-results.component.scss',
+  templateUrl: './suggested-users-result.component.html',
+  styleUrl: './suggested-users-result.component.scss',
 })
-export class SearchResultsComponent implements OnInit {
+export class SuggestedUsersResultComponent implements OnInit {
   user: any;
   posts: any[] = [];
 
@@ -34,7 +34,7 @@ export class SearchResultsComponent implements OnInit {
     private postService: PostService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const query = params['query'];
       if (query) {
